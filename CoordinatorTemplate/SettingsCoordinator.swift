@@ -1,5 +1,5 @@
 //
-//  AuthenticationCoordinator.swift
+//  SettingsCoordinator.swift
 //  CoordinatorTemplate
 //
 //  Created by Eric Williams on 2023-10-24.
@@ -7,26 +7,19 @@
 
 import UIKit
 
-class AuthenticationCoordinator: Coordinator {
+final class SettingsCoordinator: Coordinator {
     weak var appCoordinator: AppCoordinator?
     var childCoordinators = [Coordinator]()
-    
     var navigationController: UINavigationController
     
-    init(navigationController: UINavigationController) {
+    init(navigationController: UINavigationController) { 
         self.navigationController = navigationController
     }
     
     func start() {
-        let vc = AuthenticationViewController()
-        vc.tabBarItem = UITabBarItem(title: "Auth", image: UIImage(systemName: "lock"), tag: 1)
+        let vc = SettingsViewController()
+        vc.tabBarItem = UITabBarItem(title: "Settings", image: UIImage(systemName: "gear"), tag: 3)
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
-    }
-    
-    /*
-     func didFinishAuthentication() {
-         parentCoordinator?.childDidFinish(self)
-     }
-     */
+    } 
 }

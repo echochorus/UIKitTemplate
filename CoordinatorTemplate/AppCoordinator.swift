@@ -37,12 +37,27 @@ final class AppCoordinator: NSObject, Coordinator {
     func start() {
         navigationController.delegate = self
         let vc = ViewController.instantiate()
+        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
         navigationController.pushViewController(vc, animated: false)
     }
     
     func authenticate() {
         let child = AuthenticationCoordinator(navigationController: navigationController)
-        child.parentCoordinator = self
+        child.appCoordinator = self
+        childCoordinators.append(child)
+        child.start()
+    }
+    
+    func getInformation() {
+        let child = InformationCoordinator(navigationController: navigationController)
+        child.appCoordinator = self
+        childCoordinators.append(child)
+        child.start()
+    }
+    
+    func manageSettings() {
+        let child = SettingsCoordinator(navigationController: navigationController)
+        child.appCoordinator = self
         childCoordinators.append(child)
         child.start()
     }
