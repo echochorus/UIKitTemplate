@@ -26,7 +26,7 @@ extension Storyboarded where Self: UIViewController {
     }
 }
 
-final class AppCoordinator: Coordinator {
+final class AppCoordinator: NSObject, Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -35,8 +35,33 @@ final class AppCoordinator: Coordinator {
     }
     
     func start() {
+        navigationController.delegate = self
         let vc = ViewController.instantiate()
         navigationController.pushViewController(vc, animated: false)
     }
     
+    func authenticate() {
+        let child = AuthenticationCoordinator(navigationController: navigationController)
+        child.parentCoordinator = self
+        childCoordinators.append(child)
+        child.start()
+    }
+}
+
+extension AppCoordinator: UINavigationControllerDelegate {
+    func childDidFinish(_ child: Coordinator?) {
+        for (index, coordinaator) in childCoordinators.enumerated() {
+            if coordinaator === child {
+                childCoordinators.remove(at: index)
+            }
+        } 
+    }
+    
+    func navigationController(_ navigationController: UINavigationController, didShow viewController: UIViewController, animated: Bool) {
+        guard let fromViewController = navigationController.transitionCoordinator?.viewController(forKey: .from) else { return }
+        if navigationController.viewControllers.contains(fromViewController) { return }
+        if let authenticationViewController = fromViewController as? AuthenticationViewController {
+            childDidFinish(authenticationViewController.coordinator)
+        }
+    }
 }

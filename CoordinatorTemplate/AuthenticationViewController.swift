@@ -9,11 +9,22 @@ import UIKit
 
 class AuthenticationViewController: UIViewController {
 
+    weak var coordinator: AuthenticationCoordinator?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
+    
+    /*
+     // NOTE: - Fore use only when a single ViewController in necessary:
+     
+     override func viewDidDisappear(_ animated: Bool) {
+         super.viewDidDisappear(animated)
+         coordinator?.didFinishAuthentication()
+     }
+     */
     
 
     /*
