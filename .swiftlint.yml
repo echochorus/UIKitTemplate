@@ -1,0 +1,18 @@
+opt_in_rules:
+#    - force_unwrapping
+    
+#force_unwrapping: error
+
+line_length:
+    warning: 250
+    ignores_comments: true
+
+identifier_name:
+    min_length:
+        error: 3
+    excluded:
+        - vm
+        - id
+        - vc
+        - db
+

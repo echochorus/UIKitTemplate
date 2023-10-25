@@ -13,7 +13,7 @@ class AppTabBarController: UITabBarController {
     let authenticate  = AuthenticationCoordinator(navigationController: UINavigationController())
     let info = InformationCoordinator(navigationController: UINavigationController())
     let settings = SettingsCoordinator(navigationController: UINavigationController())
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -21,14 +21,13 @@ class AppTabBarController: UITabBarController {
         authenticate.start()
         info.start()
         settings.start()
-        viewControllers = [app.navigationController,  authenticate.navigationController, info.navigationController, settings.navigationController]
+        viewControllers = [app.navigationController, authenticate.navigationController, info.navigationController, settings.navigationController]
         tabBarController?.tabBar.barTintColor = .white
         tabBarController?.tabBar.backgroundColor = .white.withAlphaComponent(0.3)
-        
+
         UITabBar.appearance().barTintColor = .systemBackground
         tabBar.tintColor = .white
     }
-    
 
     /*
     // MARK: - Navigation

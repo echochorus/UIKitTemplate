@@ -1,5 +1,5 @@
 //
-//  AuthenticationViewController.swift
+//  SettingsViewController.swift
 //  CoordinatorTemplate
 //
 //  Created by Eric Williams on 2023-10-24.
@@ -7,24 +7,15 @@
 
 import UIKit
 
-class AuthenticationViewController: UIViewController {
+class SettingsViewController: UIViewController {
 
-    weak var coordinator: AuthenticationCoordinator?
-    
+    weak var coordinator: SettingsCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .blue
+
+        view.backgroundColor = .darkGray
     }
-    
-    /*
-     // NOTE: - Fore use only when a single ViewController in necessary:
-     
-     override func viewDidDisappear(_ animated: Bool) {
-         super.viewDidDisappear(animated)
-         coordinator?.didFinishAuthentication()
-     }
-     */
-    
 
     /*
     // MARK: - Navigation

@@ -10,16 +10,17 @@ import UIKit
 final class InformationCoordinator: Coordinator {
     weak var appCoordinator: AppCoordinator?
     var childCoordinators = [Coordinator]()
-    
+
     var navigationController: UINavigationController
-    
-    init(navigationController: UINavigationController) { 
+
+    init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
-    
+
     func start() {
         let vc = InformationViewController()
         vc.tabBarItem = UITabBarItem(title: "Information", image: UIImage(systemName: "info"), tag: 2)
+        vc.navigationItem.title = "Information"
         vc.coordinator = self
         navigationController.pushViewController(vc, animated: true)
     }

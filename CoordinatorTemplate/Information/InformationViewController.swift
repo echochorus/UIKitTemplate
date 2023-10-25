@@ -1,5 +1,5 @@
 //
-//  SettingsViewController.swift
+//  InformationViewController.swift
 //  CoordinatorTemplate
 //
 //  Created by Eric Williams on 2023-10-24.
@@ -7,16 +7,15 @@
 
 import UIKit
 
-class SettingsViewController: UIViewController {
+class InformationViewController: UIViewController {
 
-    weak var coordinator: SettingsCoordinator?
-    
+    weak var coordinator: InformationCoordinator?
+
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        view.backgroundColor = .darkGray
+        view.backgroundColor = .red
     }
-    
 
     /*
     // MARK: - Navigation
