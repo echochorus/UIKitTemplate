@@ -42,7 +42,7 @@ final class AppCoordinator: NSObject, Coordinator {
     func start() {
         navigationController.delegate = self
         let vc = ViewController.instantiate()
-        vc.tabBarItem = UITabBarItem(tabBarSystemItem: .bookmarks, tag: 0)
+        vc.tabBarItem = UITabBarItem(title: "Home", image: UIImage(systemName: "app"), tag: 0)
         vc.navigationItem.title = "Coordinator Template"
         navigationController.pushViewController(vc, animated: false)
     }
